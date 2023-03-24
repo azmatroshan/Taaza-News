@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.app.taazanews.BuildConfig
 import com.app.taazanews.data.Article
 import com.app.taazanews.data.NewsApi
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsViewModel : ViewModel() {
     private val BASE_URL = "https://newsapi.org/v2/"
-    private val apiKey = API_KEY // API_KEY is hidden
+    private val apiKey = BuildConfig.API_KEY // API_KEY is hidden
 
     private val api: NewsApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
