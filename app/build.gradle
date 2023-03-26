@@ -90,5 +90,7 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.2.0")
+    //Pager
+    implementation "com.google.accompanist:accompanist-pager:0.23.1"
 
 }

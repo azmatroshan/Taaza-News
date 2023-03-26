@@ -26,14 +26,14 @@ class NewsViewModel : ViewModel() {
     private val _articles = MutableLiveData<List<Article>>()
     val articles: LiveData<List<Article>> = _articles
 
-    init {
-        fetchNews()
-    }
+//    init {
+//        fetchNews(query = "technology")
+//    }
 
-    private fun fetchNews() {
+    fun fetchNews(query: String) {
         viewModelScope.launch {
             try {
-                val response = api.getNews("india", apiKey)
+                val response = api.getNews(query, apiKey)
                 if (response.status == "ok") {
                     _articles.postValue(response.articles)
                 }

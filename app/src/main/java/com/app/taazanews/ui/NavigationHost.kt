@@ -1,5 +1,7 @@
 package com.app.taazanews.ui
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -9,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Composable
 fun TaazaNews(
     navController: NavHostController = rememberNavController()
@@ -18,7 +21,7 @@ fun TaazaNews(
         startDestination = Screens.Home.route,
     ){
         composable(route = Screens.Home.route){
-            HomeScreen(navController = navController)
+            NewsCategory(navController = navController)
         }
         composable(
             route = Screens.NewsScreen.route,

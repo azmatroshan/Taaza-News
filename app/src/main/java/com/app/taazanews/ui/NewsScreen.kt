@@ -1,19 +1,13 @@
 package com.app.taazanews.ui
 
 import android.annotation.SuppressLint
-import android.view.ViewGroup
-import android.webkit.WebResourceRequest
-import android.webkit.WebResourceResponse
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import com.app.taazanews.ui.common.TaazaTopBar
 
 @Composable
@@ -44,6 +38,7 @@ fun MyContent(
     AndroidView(
         factory = {
             WebView(it).apply {
+                CookieManager.getInstance().setAcceptCookie(true)
                 webViewClient = AdBlockWebViewClient()
                 loadUrl(mUrl)
             }
