@@ -34,7 +34,7 @@ fun TabScreen(
     modifier: Modifier = Modifier,
     newsViewModel: NewsViewModel = viewModel(),
     navController: NavHostController,
-    query: String
+    query: String?
 ) {
     val newsArticles by newsViewModel.articles.observeAsState()
     val connectivityManager = LocalContext.current.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -68,7 +68,7 @@ fun TabScreen(
                     .fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "Error loading articles", fontSize = 16.sp)
+                Text(text = stringResource(R.string.error_loading), fontSize = 16.sp)
             }
         }  else {
             LazyColumn(
@@ -88,8 +88,8 @@ fun TabScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Icon(imageVector = Icons.Filled.Warning, contentDescription = "no internet")
-            Text(text = "No internet connection", fontSize = 16.sp)
+            Icon(imageVector = Icons.Filled.Warning, contentDescription = stringResource(R.string.no_internet))
+            Text(text = stringResource(R.string.no_internet), fontSize = 16.sp)
         }
     }
 }

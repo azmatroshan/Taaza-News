@@ -5,4 +5,6 @@
     <string name="back_button">Back Button</string>
     <string name="loading">Loading..</string>
     <string name="image_description">image related to news</string>
+    <string name="error_loading">Error loading articles</string>
+    <string name="no_internet">No internet connection</string>
 </resources>

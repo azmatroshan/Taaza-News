@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NewsViewModel : ViewModel() {
     private val BASE_URL = "https://newsapi.org/v2/"
     private val apiKey = BuildConfig.API_KEY // API_KEY is hidden
-
+    private val country = "in"
     private val api: NewsApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -30,10 +30,10 @@ class NewsViewModel : ViewModel() {
 //        fetchNews(query = "technology")
 //    }
 
-    fun fetchNews(query: String) {
+    fun fetchNews(category: String?) {
         viewModelScope.launch {
             try {
-                val response = api.getNews(query, apiKey)
+                val response = api.getNews(country, category, apiKey)
                 if (response.status == "ok") {
                     _articles.postValue(response.articles)
                 }

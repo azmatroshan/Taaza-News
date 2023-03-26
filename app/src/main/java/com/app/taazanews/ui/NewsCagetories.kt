@@ -26,7 +26,7 @@ fun NewsCategory(
     navController: NavHostController
 ) {
     val coroutine = rememberCoroutineScope()
-    val tabs = listOf("All", "Business", "Education", "Entertainment", "Health", "Politics", "Sports", "Technology")
+    val tabs = listOf("All", "Business", "Entertainment", "Health", "Politics", "Science", "Sports", "Technology")
     //val selectedTabIndex by rememberSaveable { mutableStateOf(0) }
     val pagerState = rememberPagerState(0)
 
@@ -60,22 +60,22 @@ fun NewsCategory(
         HorizontalPager(state = pagerState, count = tabs.size){
             when (pagerState.currentPage) {
                 0 -> {
-                    TabScreen(navController = navController, query = "india")
+                    TabScreen(navController = navController, query = null)
                 }
                 1 -> {
                     TabScreen(navController = navController, query = "business")
                 }
                 2 -> {
-                    TabScreen(navController = navController, query = "education")
-                }
-                3 -> {
                     TabScreen(navController = navController, query = "entertainment")
                 }
-                4 -> {
+                3 -> {
                     TabScreen(navController = navController, query = "health")
                 }
-                5 -> {
+                4 -> {
                     TabScreen(navController = navController, query = "politics")
+                }
+                5 -> {
+                    TabScreen(navController = navController, query = "science")
                 }
                 6 -> {
                     TabScreen(navController = navController, query = "sports")

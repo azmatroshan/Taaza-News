@@ -5,10 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -18,14 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontVariation.weight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import coil.size.Scale
 import com.app.taazanews.R
 import com.app.taazanews.data.Article
 import com.app.taazanews.ui.Screens
@@ -73,8 +73,11 @@ fun CommonNewsCard(
             if(painter.state is AsyncImagePainter.State.Success){
                 Image(
                     modifier = Modifier
-                        .clip(shape = RoundedCornerShape(8.dp)),
+                        .clip(shape = RoundedCornerShape(8.dp))
+                        .height(200.dp)
+                        .fillMaxWidth(),
                     painter = painter,
+                    contentScale = ContentScale.Crop,
                     contentDescription = stringResource(R.string.image_description)
                 )
             }else{
@@ -85,7 +88,7 @@ fun CommonNewsCard(
                 .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = news.description!!, modifier = Modifier
+                Text(text = news.description?:"", modifier = Modifier
                     .weight(9f))
                 IconButton(
                     onClick = {
