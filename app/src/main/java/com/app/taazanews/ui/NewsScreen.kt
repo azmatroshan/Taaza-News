@@ -1,7 +1,10 @@
 package com.app.taazanews.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.Uri
 import android.webkit.*
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -17,12 +20,7 @@ fun NewsDetailScreen(
 ) {
     Scaffold(
         topBar = {
-            TaazaTopBar(
-                canNavigateBack = navController.previousBackStackEntry != null,
-                navigateUp = {
-                    navController.navigateUp()
-                }
-            )
+            TaazaTopBar()
         }
     ) {
         MyContent(modifier = Modifier.padding(it), mUrl = mUrl)
@@ -49,6 +47,14 @@ fun MyContent(
             it.reload()
         }
     )
+}
+
+fun openTab(context: Context, URL: String) {
+    val builder = CustomTabsIntent.Builder()
+    builder.setShowTitle(true)
+    builder.setInstantAppsEnabled(true)
+    val customBuilder = builder.build()
+    customBuilder.launchUrl(context, Uri.parse(URL))
 }
 
 private class AdBlockWebViewClient : WebViewClient() {

@@ -31,7 +31,7 @@ fun NewsCategory(
     val pagerState = rememberPagerState(0)
 
     Column {
-        TaazaTopBar(canNavigateBack = false)
+        TaazaTopBar()
         ScrollableTabRow(
             selectedTabIndex = pagerState.currentPage,
             edgePadding = 0.dp,

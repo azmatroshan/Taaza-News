@@ -14,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsViewModel : ViewModel() {
-    private val BASE_URL = "https://newsapi.org/v2/"
     private val apiKey = BuildConfig.API_KEY // API_KEY is hidden
     private val country = "in"
     private val api: NewsApi = Retrofit.Builder()
@@ -45,5 +44,6 @@ class NewsViewModel : ViewModel() {
 
     companion object {
         const val TAG = "NewsViewModel"
+        private const val BASE_URL = "https://newsapi.org/v2/"
     }
 }
